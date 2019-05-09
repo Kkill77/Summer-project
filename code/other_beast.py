@@ -1,1 +1,2 @@
-other_beast.py
+def otherBeastScreen():
+	return "otherBeast"

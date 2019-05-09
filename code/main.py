@@ -1,8 +1,8 @@
 import pygame
 import sys
 from menu_screen import menuScreen
-from my_beast import myBeastScreen
-from other_beast import otherBeastScreen
+#from my_beast import myBeastScreen
+#from other_beast import otherBeastScreen
 # setting up pygame
 pygame.init()
 
@@ -25,12 +25,12 @@ def game_loop(quit):
 
         if gameState == "quit":
             quit = True
-        elif gameState == "myBeast":
+        #elif gameState == "myBeast":
             # running tutorial screen
-            quit = myBeastScreen()
-        elif gameState == "otherBeast":
+           # quit = myBeastScreen()
+        #elif gameState == "otherBeast":
             # running play game
-            quit = otherBeastScreen()
+        #    quit = otherBeastScreen()
         # updating display and establishing FPS
         pygame.display.update()
         clock.tick(60)
