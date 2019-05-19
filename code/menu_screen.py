@@ -16,8 +16,8 @@ display_width, display_height = 2000, 1000
 clock = pygame.time.Clock()
 gameDisplay = pygame.display.set_mode((display_width, display_height))
 
-#background = pygame.image.load('../images/game_background.jpg')
-#background = pygame.transform.scale(background, (2000, 1000))
+background = pygame.image.load('../images/scary_sully.png')
+background = pygame.transform.scale(background, (1000, 500))
 button_size = int((display_width / display_height) * 25) 
 
 
@@ -25,8 +25,9 @@ def menuScreen(state):
     # The menuScreen function takes in the paramater 'state' and returns the 
     # next selected state that the user wishes to play. It is responsible for
     # displaying the buttons to the screen and navigating between the states.
-    #gameDisplay.blit(background, (0, 0))
-    displayText("BeastKeeper 2.0", '../fonts/Antonio-Bold.ttf', 200, display_width / 2, (display_height / 5),
+    gameDisplay.fill(black)
+    gameDisplay.blit(background, (500, 300))
+    displayText("BeastKeeper", '../fonts/Antonio-Bold.ttf', 200, display_width / 2, (display_height / 5),
                  white, 0)
 
     # creating the buttons
