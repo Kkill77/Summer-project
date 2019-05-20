@@ -1,7 +1,7 @@
 import pygame
 import sys
 from menu_screen import menuScreen
-from beast_profile import myBeastScreen
+from beast_profile import profileScreen
 from Beast import Beast
 # setting up pygame
 pygame.init()
@@ -12,9 +12,9 @@ clock = pygame.time.Clock()
 
 quit = False
 
-# Initializing the sets of beasts
-mySet = []
-otherSet = []
+# Initializing the arrays of beasts
+myBeasts = []
+otherBeasts = []
 
 def readFile():
     file = open("data.txt", "r")
@@ -32,11 +32,11 @@ def readFile():
             tempBeast.appointment = char[5]
             tempBeast.info = char[6]
             tempBeast.med = char[7]
-            tempBeast.image = char[8]
+            tempBeast.image = char[8].strip('\n')
             if (counter == 2):
-                mySet.append(tempBeast)
+                myBeasts.append(tempBeast)
             else:
-                otherSet.append(tempBeast)
+                otherBeasts.append(tempBeast)
 
 readFile()
 
@@ -51,10 +51,10 @@ def game_loop(quit):
         gameState = menuScreen(None)
         if gameState == "quit":
             quit = True
-        elif gameState == "myBeast":
-            quit = myBeastScreen(mySet, True)
-        elif gameState == "otherBeast":
-            quit = myBeastScreen(otherSet, False)
+        elif gameState == "myBeast" and myBeasts:
+            quit = profileScreen(myBeasts, True)
+        elif gameState == "otherBeast" and otherBeasts:
+            quit = profileScreen(otherBeasts, False)
         # updating display and establishing FPS
         pygame.display.update()
         clock.tick(60)

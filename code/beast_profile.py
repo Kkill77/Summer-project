@@ -1,4 +1,5 @@
 import pygame
+import os
 from util import displayText, button
 
 # declaring global variables needed
@@ -13,11 +14,9 @@ black = (0, 0, 0)
 display_width, display_height = 2000, 1000
 current = 0
 
-background = pygame.image.load('../images/dragon.jpg')
-background = pygame.transform.scale(background, (2000, 1000))
 clock = pygame.time.Clock()
 gameDisplay = pygame.display.set_mode((display_width, display_height))
-button_size = int((display_width / display_height) * 25) 
+button_size = int((display_width / display_height) * 25)
 
 def displayProfile(mySet):
 	gameDisplay.fill(black)
@@ -33,10 +32,13 @@ def displayProfile(mySet):
                  white, 0)
 	displayText(mySet[current].med, '../fonts/Antonio-Bold.ttf', 100, display_width / 2, (display_height / 1.5),
                  white, 0)
+	imagePath = os.path.join('../images/', mySet[current].image)
+	profilePic = pygame.image.load(imagePath).convert()
+	profilePic = pygame.transform.scale(profilePic, (400, 200))
+	gameDisplay.blit(profilePic, (display_width / 1.5, display_height / 20))
 
-def myBeastScreen(mySet, owned):
+def profileScreen(mySet, owned):
 	global current
-	gameDisplay.fill(black)
 	play = True
 	while play:
 		for event in pygame.event.get():
