@@ -16,3 +16,4 @@ Day 3 (2 hours):
 	- Simplified profile screen to reduce repeated code
 	- Implemmented profile pictures
 	- Added remaining profile information
+	- Changed data type from sets to dynamic arrays for storing the beasts
